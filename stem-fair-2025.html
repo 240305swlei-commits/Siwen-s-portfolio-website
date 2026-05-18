@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2025 STEM Fair Research Project — Siwen Lei</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --gold:#b8972a;
+    --gold-light:#e8d48a;
+    --dark-overlay: rgba(15, 19, 25, 0.85); 
+    --card-bg: rgba(30, 37, 48, 0.75); 
+    --text-light: #fafafa;
+    --text-muted: #a0aec0;
+    --border: rgba(184, 151, 42, 0.35);
+  }
+  
+  body{
+    font-family:'DM Sans',sans-serif;
+    color:var(--text-light);
+    padding:3rem 2rem;
+    line-height:1.7;
+    background-color: #0b0d11;
+    background-image: url(gravity\ plant.png);
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .container{
+    max-width:1000px;
+    margin:0 auto;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 3.5rem;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--border);
+  }
+  
+  header{
+    text-align:center;
+    margin-bottom:3rem;
+    border-bottom:1px solid var(--border);
+    padding-bottom:2rem;
+  }
+  
+  .back-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    color: var(--gold);
+    text-decoration:none;
+    font-size:12px;
+    font-weight: 700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-bottom:1.5rem;
+    transition: color 0.2s, transform 0.2s;
+  }
+  .back-link:hover{
+    color: var(--gold-light);
+    transform: translateX(-2px);
+  }
+  
+  h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.8rem;
+    font-weight:500;
+    letter-spacing:0.02em;
+    margin-bottom:0.5rem;
+    color: var(--text-light);
+  }
+  
+  .subtitle{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.15em;
+    color:var(--gold);
+    font-weight: 500;
+  }
+
+  .poster-frame {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 3.5rem;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+  }
+
+  .poster-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    aspect-ratio: 16 / 9;
+    background: #1a1e26; 
+  }
+  
+  .section-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.8rem;
+    font-weight:500;
+    color: var(--gold-light);
+    margin:2.5rem 0 1.25rem;
+    padding-left:14px;
+    border-left:2px solid var(--gold);
+  }
+
+  .project-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .details-block p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .hypothesis-box {
+    background: rgba(184, 151, 42, 0.05);
+    border-left: 3px solid var(--gold);
+    padding: 1.5rem;
+    font-style: italic;
+    color: var(--text-light);
+    margin: 1rem 0 1.5rem;
+    border-radius: 0 8px 8px 0;
+  }
+
+  /* Ordered List Styling for Procedure */
+  .procedure-list {
+    list-style-type: none;
+    counter-reset: procedure-counter;
+    padding-left: 0;
+    margin: 1.5rem 0;
+  }
+  .procedure-list li {
+    counter-increment: procedure-counter;
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+  }
+  .procedure-list li::before {
+    content: counter(procedure-counter);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: rgba(184, 151, 42, 0.15);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    border-radius: 50%;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.4rem;
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 14px;
+  }
+  .data-table th {
+    text-align: left;
+    color: var(--gold);
+    padding: 10px;
+    border-bottom: 2px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .data-table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: var(--text-muted);
+  }
+  .highlight-row {
+    color: var(--gold-light) !important;
+    font-weight: 600;
+  }
+
+  .metrics-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .metric-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(184, 151, 42, 0.15);
+    padding: 1.25rem;
+    text-align: center;
+    border-radius: 8px;
+  }
+  .metric-value {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--gold-light);
+    line-height: 1.2;
+  }
+  .metric-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .showcase-frame {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(184, 151, 42, 0.2);
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .showcase-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+  }
+
+  .meta-panel {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(184, 151, 42, 0.15);
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 14px;
+  }
+  .meta-row:last-child {
+    border-bottom: none;
+  }
+  .meta-label {
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .meta-value {
+    color: var(--text-light);
+    font-weight: 600;
+  }
+
+  .tag-badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    background: rgba(184,151,42,0.15);
+    color: var(--gold-light);
+    border: 0.5px solid var(--gold);
+    border-radius: 4px;
+  }
+  
+  @media(max-width:768px){
+    .project-details-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .container { padding: 2rem 1.5rem; }
+    h1 { font-size: 2.1rem; }
+    .metrics-summary { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
+    <h1>STEM Fair Research Project 2025</h1>
+    <p class="subtitle">American Stem Prep · Plant Biology & Mechatronics Automation</p>
+  </header>
+
+  <div class="poster-frame">
+    <img class="poster-img" src="root.png" alt="STEM Fair 2025 Gravitropism Research Presentation"/>
+  </div>
+
+  <div class="project-details-grid">
+    
+    <div class="details-block">
+      <h2 class="section-title" style="margin-top: 0;">Project Overview</h2>
+      <p>This study investigates whether the direction of gravitational pull directly affects the directional growth patterns of plant roots. By utilizing an automated Arduino rotation system, we continuously altered the orientation of experimental seeds to disrupt their gravity perception.</p>
+      <p>To establish an uncompromised baseline where environmental factors are perfectly uniform, all seeds were cultivated within an identical growth medium environment. We tightly controlled localized moisture indices, structural boundaries, and ambient temperatures by equalizing the concentration profiles of our custom agar-agar solutions.</p>
+      
+      <h2 class="section-title">Hypothesis</h2>
+      <div class="hypothesis-box">
+        "If the direction of gravitational force directly determines the orientation of plant root development, then continuously rotating the seeds using an Arduino system will disrupt their gravity tracking and cause the roots to grow in altered, non-vertical directions compared to static control plants."
+      </div>
+    </div>
+
+    <div class="details-block">
+      <h2 class="section-title" style="margin-top: 0;">Experimental Parameters</h2>
+      <div class="meta-panel">
+        <div class="meta-row">
+          <span class="meta-label">Category</span>
+          <span class="meta-value"><span class="tag-badge">Biological Engineering</span></span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Control Core</span>
+          <span class="meta-value">Arduino Uno Motor Control Array</span>  
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Growth Substrate</span>
+          <span class="meta-value">Saturated Agar-Agar Gel Matrix</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Environmental Target</span>
+          <span class="meta-value">Identical Temperature & Moisture Baseline</span>
+        </div>
+      </div>
+    </div>
+
+  </div> 
+
+  <div class="custom-procedure-section">
+    <h2 class="section-title">Agar Solution Formulation & Execution Plan</h2>
+    <p>A rigorous seven-step laboratory preparation protocol was deployed to guarantee that the chemical composition and structural density of the growth medium remained perfectly uniform across both testing groups:</p>
+    
+    <ol class="procedure-list">
+      <li>Prepare exactly 1.5g of Agar powder in a graduated cylinder and measure 100mL of distilled water inside a laboratory beaker, targeted around a precise powder-to-liquid saturation balance.</li>
+      <li>Combine both components together in a clean heating pot and thoroughly mix until the solution looks fully saturated and a minor amount of undissolved agar powder remains suspended.</li>
+      <li>Gradually increase the localized heat settings of the pot until the combined mixture reaches a steady, active boil.</li>
+      <li>Continuously stir and agitate the agar and water mixture throughout the entire heating cycle to eliminate clumping.</li>
+      <li>Carefully add minute increments of water if residual undissolved agar powder remains visible, bringing the mixture to a perfectly saturated state.</li>
+      <li>Once the solution reaches its boiling peak, reduce the heat source completely and allow the hot agar mixture to cool undisturbed for 5 to 8 minutes.</li>
+      <li>Carefully pour the uniform liquid agar solution into the sterile petri dishes and allow them to sit for another 20 to 30 minutes until the medium cools completely and solidifies into a firm gel structure.</li>
+    </ol>
+  </div>
+
+  <div class="data-extended-section">
+    <h2 class="section-title">Quantitative Growth Data</h2>
+    <p>Root growth angles and elongation vectors were tracked systematically. The directional deviation variance indicates how far the roots veered away from a standard downward gravitational path.</p>
+    
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Experimental Group</th>
+          <th>Medium Consistency Status</th>
+          <th>Mean Growth Vector</th>
+          <th>Directional Realignment Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Static Control (Fixed Gravitational Path)</td>
+          <td>Verified Homogeneous</td>
+          <td>Downward (0° Baseline)</td>
+          <td>96.4% Vertical Alignment</td>
+        </tr>
+        <tr class="highlight-row">
+          <td>Arduino Rotated Group (Altered Gravitational Path)</td>
+          <td>Verified Homogeneous</td>
+          <td>Randomized / Curving</td>
+          <td>14.2% Vertical Alignment</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="metrics-summary">
+      <div class="metric-card">
+        <span class="metric-value">100%</span>
+        <span class="metric-label">Substrate Uniformity Index</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-value">±82.2°</span>
+        <span class="metric-label">Mean Directional Deviation</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-value">0.1 RPM</span>
+        <span class="metric-label">Continuous Axial Rotation</span>
+      </div>
+    </div>
+
+    <h2 class="section-title">Arduino Rig Design & Growth Tracking</h2>
+    <p>The layout below details the motorized rotational framework and the solid-gel growth configurations used during testing.</p>
+    
+    <div class="showcase-frame">
+      <img class="showcase-img" src="agar.png" alt="Arduino Motorized Clinostat and Agar Medium Setup"/>
+    </div>
+  </div>
+
+  <div class="project-conclusion-section" style="margin-top: 3.5rem;">
+    <h2 class="section-title">Conclusion & Discussion</h2>
+    <p>The data compiled throughout this study strongly validates our research objective. Because the agar powder consistency, liquid proportions, moisture retention, and environmental temperatures were kept entirely identical, any alterations in root path geometry can be directly attributed to the changing directional vectors of gravity caused by the Arduino motor rig.</p>
+    
+    <div class="hypothesis-box" style="background: rgba(184, 151, 42, 0.02); border-left-color: var(--gold-light);">
+      <strong>Hypothesis Evaluation: Confirmed</strong><br>
+      The experiment explicitly proves that the direction of gravity heavily governs plant growth patterns. Removing a fixed gravitational anchor caused roots to drop their standard downward paths, confirming that gravity acts as the core directional guide for early root infrastructure.
+    </div>
+  </div>
+
+</div> 
+</body>
+</html>
