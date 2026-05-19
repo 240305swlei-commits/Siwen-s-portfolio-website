@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Siwen Lei — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{--gold:#b8972a;--gold-light:#e8d48a;--navy:#fafafa;--cream:#1a1a1a;--text-dark:#fafafa;--text-mid:#ccc;--text-muted:#888;--border:rgba(184,151,42,0.4);}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);font-size:15px;line-height:1.7;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(26,26,26,0.92);backdrop-filter:blur(8px);border-bottom:0.5px solid var(--border);}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;color:var(--text-dark);letter-spacing:0.04em;}
+  .nav-links{display:flex;gap:2.5rem;list-style:none;}
+  .nav-links a{font-size:13px;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;color:var(--text-mid);transition:color 0.2s;}
+  .nav-links a:hover{color:var(--gold);}
+  section{padding:7rem 4rem 4rem;max-width:960px;margin:0 auto;}
+  #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:6rem;border-bottom:0.5px solid var(--border);}
+  .hero-eyebrow{font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;font-weight:500;}
+  .hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,7vw,5.5rem);font-weight:300;line-height:1.05;color:var(--text-dark);margin-bottom:1.5rem;}
+  .hero-tagline{font-size:1.05rem;color:var(--text-mid);max-width:480px;margin-bottom:2.5rem;}
+  .hero-cta{display:inline-flex;align-items:center;gap:10px;padding:0.75rem 2rem;border:1px solid var(--gold);color:var(--gold);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer;transition:background 0.2s,color 0.2s;font-family:'DM Sans',sans-serif;}
+  .hero-cta:hover{background:var(--gold);color:white;}
+  .section-label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;font-weight:500;}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:400;color:var(--text-dark);margin-bottom:2.5rem;padding-bottom:1rem;border-bottom:0.5px solid var(--border);}
+  
+  #about { background-color: var(--cream); position: relative; border-bottom:0.5px solid var(--border);}
+  #about::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://images.subspace.im/mock/image_28d520.png'); background-repeat: no-repeat; background-position: left center; background-size: cover; opacity: 0.25; z-index: 1; }
+  .about-grid{display:grid;grid-template-columns:220px 1fr;gap:3rem;align-items:start; position: relative; z-index: 2;}
+  
+  .profile-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:1rem;}
+  .profile-photo{width:200px;height:240px;object-fit:cover;object-position:top;border:1px solid var(--gold);display:block;}
+  .about-right{display:flex;flex-direction:column;gap:1.5rem;}
+  .about-text p{color:var(--text-mid);margin-bottom:1rem;}
+  .about-meta{display:flex;flex-direction:column;gap:0.75rem;}
+  .meta-item{padding:0.8rem 1rem;border:0.5px solid var(--border);background:rgba(255,255,255,0.03);}
+  .meta-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;}
+  .meta-value{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--text-dark);font-weight:500;}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:2.5rem;}
+  .stat-card{padding:1.5rem 1.25rem;border:0.5px solid var(--border);background:rgba(255,255,255,0.03);position:relative;}
+  .stat-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold);}
+  .stat-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.4rem;}
+  .stat-value{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:500;color:var(--text-dark);line-height:1;}
+  .stat-sub{font-size:12px;color:var(--text-muted);margin-top:4px;}
+  .ap-list{display:flex;flex-direction:column;}
+  .ap-item{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border-bottom:0.5px solid var(--border);}
+  .ap-name{font-size:14px;color:var(--text-dark);}
+  .ap-score{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--gold);}
+  .ap-score.pending{color:var(--text-muted);font-size:12px;font-family:'DM Sans',sans-serif;font-weight:400;letter-spacing:0.05em;}
+  .projects-list{display:flex;flex-direction:column;gap:1.5rem;}
+  .project-card{border:0.5px solid var(--border);background:rgba(255,255,255,0.03);overflow:hidden;}
+  .project-img-link{display:block;width:100%;height:180px;text-decoration:none;position:relative;background:#2a2a2a;}
+  .project-img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity 0.2s;}
+  .project-img-link:hover .project-img{opacity:0.85;}
+  
+  .project-url-row{display:flex;gap:8px;padding:8px 12px;background:rgba(255,255,255,0.02);border-bottom:0.5px solid var(--border);}
+  .project-url-input{flex:1;font-size:11px;padding:5px 8px;border:0.5px solid var(--border);background:var(--cream);color:var(--text-dark);outline:none;font-family:'DM Sans',sans-serif;}
+  .project-url-input:focus{border-color:var(--gold);}
+  .project-url-btn{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--gold);background:transparent;color:var(--gold);cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:background 0.2s,color 0.2s;}
+  .project-url-btn:hover{background:var(--gold);color:white;}
+  .project-body{padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;}
+  .project-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--text-dark);font-weight:500;margin-bottom:0.3rem;}
+  .project-desc{font-size:13px;color:var(--text-mid);line-height:1.6;}
+  .project-tag{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);border:0.5px solid var(--gold);padding:4px 10px;white-space:nowrap;flex-shrink:0;}
+  .project-meta{display:flex;gap:1rem;margin-top:8px;flex-wrap:wrap;}
+  .project-meta-item{font-size:11px;color:var(--text-muted);letter-spacing:0.04em;}
+  .project-meta-item strong{color:var(--text-dark);font-weight:500;}
+  .project-link{display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:12px;color:var(--gold);text-decoration:none;letter-spacing:0.05em;border-bottom:0.5px solid var(--gold-light);}
+  .project-link:hover{border-bottom-color:var(--gold);}
+  .achievements-list{display:flex;flex-direction:column;}
+  .achievement-item{display:grid;grid-template-columns:80px 1fr;gap:1.5rem;padding:1.25rem 0;border-bottom:0.5px solid rgba(184,151,42,0.15);align-items:start;}
+  .achievement-year{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold);font-weight:500;}
+  .achievement-title{font-size:14px;font-weight:500;color:var(--text-dark);margin-bottom:3px;}
+  .achievement-desc{font-size:13px;color:var(--text-muted);}
+  .achievement-badge{display:inline-block;margin-top:6px;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;background:rgba(184,151,42,0.1);color:var(--gold);border:0.5px solid var(--gold);}
+  .hobbies-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;}
+  .hobby-card{padding:1.25rem 1.5rem;border:0.5px solid var(--border);background:rgba(255,255,255,0.03);display:flex;align-items:flex-start;gap:1rem;}
+  .hobby-icon{font-size:1.5rem;line-height:1;flex-shrink:0;}
+  .hobby-title{font-size:14px;font-weight:500;color:var(--text-dark);margin-bottom:3px;}
+  .hobby-desc{font-size:12px;color:var(--text-muted);line-height:1.5;}
+  #contact{border-top:0.5px solid var(--border);}
+  .contact-line{display:flex;justify-content:space-between;padding:1rem 0;border-bottom:0.5px solid var(--border);font-size:14px;}
+  .contact-key{color:var(--text-muted);letter-spacing:0.05em;}
+  .contact-val{color:var(--text-dark);font-weight:500;}
+  footer{text-align:center;padding:2rem 4rem;font-size:12px;color:var(--text-muted);border-top:0.5px solid var(--border);}
+  ::-webkit-scrollbar{width:4px;}
+  ::-webkit-scrollbar-track{background:var(--cream);}
+  ::-webkit-scrollbar-thumb{background:var(--gold-light);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Siwen Lei</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#academics">Academics</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Awards</a></li>
+    <li><a href="#hobbies">Interests</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <p class="hero-eyebrow">Finance · Class of 2025 · American Stem Prep</p>
+  <h1 class="hero-name">Siwen<br/>Lei</h1>
+  <p class="hero-tagline">Aspiring finance professional with a passion for markets, economics, and data-driven decision making.</p>
+  <a href="#about" class="hero-cta">View Portfolio ↓</a>
+</section>
+
+<section id="about">
+  <p class="section-label">Introduction</p>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-grid">
+    <div class="profile-photo-wrap">
+      <img class="profile-photo" id="profileImg" src="Siwen Picture.png" alt="Siwen Lei"/>
+    </div>
+    <div class="about-right">
+      <div class="about-text">
+        <p>I'm a senior at American Stem Prep Middle and High School, with a deep interest in finance, economics, and science. I've competed at Yale Model United Nations Korea, conducted independent STEM research over two consecutive years, and built a strong academic record across disciplines.</p>
+        <p>I plan to study Finance or Economics at the undergraduate level, with a long-term goal of working in investment management or financial strategy.</p>
+      </div>
+      <div class="about-meta">
+        <div class="meta-item"><div class="meta-label">School</div><div class="meta-value">American Stem Prep Middle and High School</div></div>
+        <div class="meta-item"><div class="meta-label">Location</div><div class="meta-value">Dongcheon-ro, Suji-gu, Yongin-si, Gyeonggi-do</div></div>
+        <div class="meta-item"><div class="meta-label">Intended Major</div><div class="meta-value">Finance / Economics</div></div>
+        <div class="meta-item"><div class="meta-label">Graduation</div><div class="meta-value">2027</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="academics">
+  <p class="section-label">Credentials</p>
+  <h2 class="section-title">Academic Stats</h2>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="stat-label">GPA (Unweighted)</div><div class="stat-value">3.8</div><div class="stat-sub">out of 4.0</div></div>
+    <div class="stat-card"><div class="stat-label">SAT Score</div><div class="stat-value">1480</div><div class="stat-sub">Evidence-Based</div></div>
+<div class="stat-card"><div class="stat-label">AP Courses</div><div class="stat-value">10</div><div class="stat-sub">3 scored · 3 pending · 4 upcoming</div></div>
+  </div>
+  <div class="ap-list">
+    <div class="ap-item"><span class="ap-name">AP Microeconomics</span><span class="ap-score">5</span></div>
+    <div class="ap-item"><span class="ap-name">AP Macroeconomics</span><span class="ap-score">5</span></div>
+    <div class="ap-item"><span class="ap-name">AP Chemistry</span><span class="ap-score">4</span></div>
+    <div class="ap-item"><span class="ap-name">AP Calculus BC</span><span class="ap-score pending">Score pending</span></div>
+    <div class="ap-item"><span class="ap-name">AP Psychology</span><span class="ap-score pending">Score pending</span></div>
+    <div class="ap-item"><span class="ap-name">AP Computer Science Principles</span><span class="ap-score pending">Score pending</span></div>
+  
+    <div class="ap-item"><span class="ap-name">AP Statistics</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2026)</span></div>
+    <div class="ap-item"><span class="ap-name">AP Comparative Government and Politics</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2026)</span></div>
+    <div class="ap-item"><span class="ap-name">AP Environmental Science</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2026)</span></div>
+    <div class="ap-item"><span class="ap-name">AP Language and Composition</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2026)</span></div>
+  </div>
+</section>
+
+<section id="projects">
+  <p class="section-label">Work</p>
+  <h2 class="section-title">Projects & Extracurriculars</h2>
+  <div class="projects-list">
+
+    <!-- Project 0: Yale MUN -->
+    <div class="project-card">
+<a class="project-img-link" href="yale-mun-docs.html" target="_blank" title="Click to view Delegate Papers">
+          <img class="project-img" id="pimg0" src="certificate (2).png" alt="Yale MUN Certificate"/>
+      </a>
+      <div class="project-url-row" style="display: none;">
+        <input class="project-url-input" id="purl0" type="text"/>
+        <button class="project-url-btn" onclick="setProjectImg(0)">Set</button>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="project-name">Yale Model United Nations Korea XII</div>
+          <div class="project-desc">Represented the United States in the UNIACB committee at Yale MUN Korea XII — one of the most prestigious Model UN conferences in Asia. Engaged in high-level policy debate, drafted resolutions, and collaborated with delegates from around the world.</div>
+          <div class="project-meta">
+            <span class="project-meta-item"><strong>Committee:</strong> UNIACB</span>
+            <span class="project-meta-item"><strong>Country:</strong> United States</span>
+            <span class="project-meta-item"><strong>Dates:</strong> Nov 29 – Dec 1, 2024</span>
+          </div>
+          <a class="project-link" href="yale-mun-docs.html" target="_blank">View Delegate Paper ↗</a>
+        </div>
+        <span class="project-tag">MUN</span>
+      </div>
+    </div>
+
+    <!-- Project 1: STEM Fair 2024 -->
+    <div class="project-card">
+      <a class="project-img-link" href="stem-fair-2024.html" target="_blank" title="Click to view Poster">
+        <img class="project-img" id="pimg1" src="project 2024.png" alt="STEM Fair 2024 Experimenting"/>
+      </a>
+      <div class="project-url-row" style="display: none;">
+        <input class="project-url-input" id="purl1" type="text"/>
+        <button class="project-url-btn" onclick="setProjectImg(1)">Set</button>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="project-name">STEM Fair Research Project 2024</div>
+          <div class="project-desc">Independent science research project presented at the annual STEM fair. Developed experimental setups, gathered data metrics, and trouble-shot electronic/sensor equipment.</div>
+          <a class="project-link" href="stem-fair-2024.html" target="_blank">View Poster ↗</a>
+        </div>
+        <span class="project-tag">STEM</span>
+      </div>
+    </div>
+
+    <!-- Project 2: STEM Fair 2025 -->
+    <div class="project-card">
+      <a class="project-img-link" href="stem-fair-2025.html" target="_blank" title="Click to view Poster">
+        <img class="project-img" id="pimg2" src="Gravity.png" alt="STEM Fair 2025 Researching"/>
+      </a>
+      <div class="project-url-row" style="display: none;">
+        <input class="project-url-input" id="purl2" type="text"/>
+        <button class="project-url-btn" onclick="setProjectImg(2)">Set</button>
+      </div>
+      <div class="project-body">
+        <div>
+          <div class="project-name">STEM Fair Research Project 2025</div>
+          <div class="project-desc">Independent science research project presented at the school STEM fair. Analyzed agricultural optimization and biological growth parameters under controlled laboratory conditions.</div>
+          <a class="project-link" href="stem-fair-2025.html" target="_blank">View Poster ↗</a>
+        </div>
+        <span class="project-tag">STEM</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="achievements">
+  <p class="section-label">Recognition</p>
+  <h2 class="section-title">Achievements & Awards</h2>
+  <div class="achievements-list">
+
+    <div class="achievement-item">
+      <div class="achievement-year">2024</div>
+      <div>
+        <div class="achievement-title">Yale Model United Nations Korea XII — Delegate</div>
+        <div class="achievement-desc">Participated as a delegate representing the United States in the UNIACB committee, Nov 29 – Dec 1, 2024. Certificate of Participation awarded by Secretary-General Wyatt Huang.</div>
+        <div class="achievement-badge">Yale MUN Korea XII Best Delegate Paper</div>
+      </div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-year">2025</div>
+      <div>
+        <div class="achievement-title">AP Scholar — Microeconomics & Macroeconomics</div>
+        <div class="achievement-desc">Achieved perfect scores of 5 in both AP Economics exams, demonstrating mastery of macro and microeconomic theory.</div>
+      </div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-year">2024–25</div>
+      <div>
+        <div class="achievement-title">STEM Fair — Independent Research (2 years)</div>
+        <div class="achievement-desc">Completed and presented independent research projects at the school STEM fair in both 2024 and 2025.</div>
+      </div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-year">2024–25</div>
+      <div>
+        <div class="achievement-title">National Honor Society (NHS) — Member 🎖️</div>
+        <div class="achievement-desc">Selected for membership based on excellence in scholarship, leadership, service, and character. Collaborated on school-wide service initiatives.</div>
+      </div>
+    </div>
+
+    <div class="achievement-item">
+      <div class="achievement-year">2025</div>
+      <div>
+        <div class="achievement-title">Volunteer Math Tutor — 38 Hours 🧮</div>
+        <div class="achievement-desc">Dedicated 38 hours to volunteering as a peer math tutor, breaking down complex algebraic and quantitative concepts to help fellow students improve their academic performance and confidence.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="hobbies">
+  <p class="section-label">Beyond Academics</p>
+  <h2 class="section-title">Hobbies & Interests</h2>
+  <div class="hobbies-grid">
+    <div class="hobby-card"><div class="hobby-icon">🌐</div><div><div class="hobby-title">Model United Nations</div><div class="hobby-desc">Passionate about international diplomacy, geopolitics, and policy debate. Competed at Yale MUN Korea XII representing the United States and Argentina in 2024 and 2025.</div></div></div>
+    <div class="hobby-card"><div class="hobby-icon">🎮</div><div><div class="hobby-title"> Business Strategy Game</div><div class="hobby-desc">Simulation Games are one of my favorite type of game, namely, Monopoly and Civilization.</div></div></div>
+    <div class="hobby-card"><div class="hobby-icon">📚</div><div><div class="hobby-title">Writing Mystery Fiction</div><div class="hobby-desc">Inspired by Agatha Christie, I developed an interest in writing mystery novels. It is a way to express my creativity.</div></div></div>
+    <div class="hobby-card"><div class="hobby-icon">🏸</div><div><div class="hobby-title">Badminton</div><div class="hobby-desc">I learned to play Badminton since a young age of 9; moreover, I self taught tennis based on the experience playing badminton.</div></div></div>
+  </div>
+</section>
+
+<section id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-line"><span class="contact-key">Email</span><span class="contact-val">240305sw.lei@astemprep.org</span></div>
+  <div class="contact-line"><span class="contact-key">School</span><span class="contact-val">American Stem Prep Middle and High School</span></div>
+  <div class="contact-line"><span class="contact-key">Location</span><span class="contact-val">Dongcheon-ro, Suji-gu, Yongin-si, Gyeonggi-do</span></div>
+  <div class="contact-line"><span class="contact-key">Available for</span><span class="contact-val">Internships · Research · Mentorship</span></div>
+</section>
+
+<footer>© 2026 Siwen Lei · American Stem Prep Middle and High School</footer>
+
+<script>
+function setProjectImg(i){const url=document.getElementById('purl'+i).value.trim();if(!url)return;const img=document.getElementById('pimg'+i);img.src=url;}
+</script>
+</body>
+</html>
