@@ -16,7 +16,16 @@
   .nav-links a{font-size:13px;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;color:var(--text-mid);transition:color 0.2s;}
   .nav-links a:hover{color:var(--gold);}
   section{padding:7rem 4rem 4rem;max-width:960px;margin:0 auto;}
-  #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:6rem;border-bottom:0.5px solid var(--border);}
+  
+  /* Flowing Pictures (Marquee) Styles */
+  #gallery { padding: 6.5rem 0 1rem; max-width: 100%; border-bottom: none; overflow: hidden; }
+  .marquee-wrapper { display: flex; overflow: hidden; width: 100%; background: rgba(255, 255, 255, 0.01); padding: 1.5rem 0; }
+  .marquee-content { display: flex; gap: 2rem; padding-right: 2rem; animation: marquee 25s linear infinite; }
+  .marquee-content img { width: 340px; height: 240px; object-fit: cover; border: 0.5px solid var(--border); opacity: 0.85; transition: opacity 0.3s; }
+  .marquee-content img:hover { opacity: 1; }
+  @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+
+  #hero{min-height:55vh;display:flex;flex-direction:column;justify-content:center;padding-top:2rem;border-bottom:0.5px solid var(--border);}
   .hero-eyebrow{font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;font-weight:500;}
   .hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,7vw,5.5rem);font-weight:300;line-height:1.05;color:var(--text-dark);margin-bottom:1.5rem;}
   .hero-tagline{font-size:1.05rem;color:var(--text-mid);max-width:480px;margin-bottom:2.5rem;}
@@ -48,6 +57,7 @@
   .ap-name{font-size:14px;color:var(--text-dark);}
   .ap-score{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--gold);}
   .ap-score.pending{color:var(--text-muted);font-size:12px;font-family:'DM Sans',sans-serif;font-weight:400;letter-spacing:0.05em;}
+  
   .projects-list{display:flex;flex-direction:column;gap:1.5rem;}
   .project-card{border:0.5px solid var(--border);background:rgba(255,255,255,0.03);overflow:hidden;}
   .project-img-link{display:block;width:100%;height:180px;text-decoration:none;position:relative;background:#2a2a2a;}
@@ -95,6 +105,7 @@
   <div class="nav-logo">Siwen Lei</div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#academics">Academics</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#achievements">Awards</a></li>
@@ -102,6 +113,25 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
+
+<!-- Flowing Pictures / Gallery Section Moved to the very top -->
+<section id="gallery">
+  <div class="marquee-wrapper">
+    <div class="marquee-content">
+      <img src="kindergarten.png" alt="Kindergarten"/>
+      <img src="Shanghai.png" alt="Shanghai"/>
+      <img src="MUN.png" alt="MUN"/>
+      <img src="STEM.png" alt="STEM Fair"/>
+    </div>
+    <!-- Duplicate the content for seamless looping -->
+    <div class="marquee-content">
+      <img src="kindergarten.png" alt="Kindergarten"/>
+      <img src="Shanghai.png" alt="Shanghai"/>
+      <img src="MUN.png" alt="MUN"/>
+      <img src="STEM.png" alt="STEM Fair"/>
+    </div>
+  </div>
+</section>
 
 <section id="hero">
   <p class="hero-eyebrow">Finance · Class of 2025 · American Stem Prep</p>
@@ -119,7 +149,7 @@
     </div>
     <div class="about-right">
       <div class="about-text">
-        <p>I'm a senior at American Stem Prep Middle and High School, with a deep interest in finance, economics, and science. I've competed at Yale Model United Nations Korea, conducted independent STEM research over two consecutive years, and built a strong academic record across disciplines.</p>
+        <p>I'm a senior at American Stem Prep Middle and High School, with a deep interest in finance, economics, and science. I've competed at Yale MUN Korea, conducted independent STEM research over two consecutive years, and built a strong academic record across disciplines.</p>
         <p>I plan to study Finance or Economics at the undergraduate level, with a long-term goal of working in investment management or financial strategy.</p>
       </div>
       <div class="about-meta">
@@ -136,9 +166,12 @@
   <p class="section-label">Credentials</p>
   <h2 class="section-title">Academic Stats</h2>
   <div class="stats-grid">
-    <div class="stat-card"><div class="stat-label">GPA (Unweighted)</div><div class="stat-value">3.8</div><div class="stat-sub">out of 4.0</div></div>
-    <div class="stat-card"><div class="stat-label">SAT Score</div><div class="stat-value">1480</div><div class="stat-sub">Evidence-Based</div></div>
-    <div class="stat-card"><div class="stat-label">AP Courses</div><div class="stat-value">10</div><div class="stat-sub">3 scored · 3 pending · 4 upcoming</div></div>
+    <div class="stat-card"><div class="stat-label">GPA (Unweighted)</div><div class="stat-value">3.84</div><div class="stat-sub">out of 4.0</div></div>
+<div class="stat-card">
+    <div class="stat-label">SAT Score</div>
+    <div class="stat-value">1480</div>
+    <div class="stat-sub">RW 690 · Math 790</div>
+</div>    <div class="stat-card"><div class="stat-label">AP Courses</div><div class="stat-value">10</div><div class="stat-sub">3 scored · 3 pending · 4 upcoming</div></div>
   </div>
   <div class="ap-list">
     <div class="ap-item"><span class="ap-name">AP Microeconomics</span><span class="ap-score">5</span></div>
@@ -148,10 +181,10 @@
     <div class="ap-item"><span class="ap-name">AP Psychology</span><span class="ap-score pending">Score pending</span></div>
     <div class="ap-item"><span class="ap-name">AP Computer Science Principles</span><span class="ap-score pending">Score pending</span></div>
   
-    <div class="ap-item"><span class="ap-name">AP Statistics</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2026)</span></div>
-    <div class="ap-item"><span class="ap-name">AP Comparative Government and Politics</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2026)</span></div>
-    <div class="ap-item"><span class="ap-name">AP Environmental Science</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2026)</span></div>
-    <div class="ap-item"><span class="ap-name">AP Language and Composition</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2026)</span></div>
+    <div class="ap-item"><span class="ap-name">AP Statistics</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2027)</span></div>
+    <div class="ap-item"><span class="ap-name">AP Comparative Government and Politics</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2027)</span></div>
+    <div class="ap-item"><span class="ap-name">AP Environmental Science</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2027)</span></div>
+    <div class="ap-item"><span class="ap-name">AP Computer Science A</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2027)</span></div>
   </div>
 </section>
 
@@ -160,14 +193,29 @@
   <h2 class="section-title">Projects & Extracurriculars</h2>
   <div class="projects-list">
 
+    <!-- Huatai Securities Expert Interview Project -->
+    <div class="project-card">
+      <a class="project-img-link" href="Huatai_Interview_Transcript.html" title="Click to view Interview">
+        <img class="project-img" src="AI and Finance.png" alt="AI and Finance"/>
+      </a>
+      <div class="project-body">
+        <div>
+          <div class="project-name">Expert Interview: AI & Financial Markets</div>
+          <div class="project-desc">Conducted an in-depth interview with a senior executive at Huatai Securities in June 2026, analyzing AI's structural impact on investment banking.</div>
+          <div style="display: flex; gap: 15px; margin-top: 12px;">
+            <a class="project-link" href="Interview. html.html">Read Interview Transcript ↗</a>
+            <a class="project-link" href="report of the Financial market.pdf" target="_blank">Read Executive Report ↗</a>
+          </div>
+        </div>
+        <span class="project-tag">AI & Finance</span>
+      </div>
+    </div>
+
+    <!-- Harvard Political Essay Competition -->
     <div class="project-card">
       <a class="project-img-link" href="harvard-essay-docs.html" target="_blank" title="Click to view Winning Essay">
           <img class="project-img" id="pimg3" src="harvard-certificate.png" alt="Harvard Essay Certificate"/>
       </a>
-      <div class="project-url-row" style="display: none;">
-        <input class="project-url-input" id="purl3" type="text"/>
-        <button class="project-url-btn" onclick="setProjectImg(3)">Set</button>
-      </div>
       <div class="project-body">
         <div>
           <div class="project-name">Harvard Political Essay Competition</div>
@@ -178,66 +226,51 @@
       </div>
     </div>
 
+    <!-- Yale MUN Korea XII -->
     <div class="project-card">
       <a class="project-img-link" href="yale-mun-docs.html" target="_blank" title="Click to view Delegate Papers">
           <img class="project-img" id="pimg0" src="certificate (2).png" alt="Yale MUN Certificate"/>
       </a>
-      <div class="project-url-row" style="display: none;">
-        <input class="project-url-input" id="purl0" type="text"/>
-        <button class="project-url-btn" onclick="setProjectImg(0)">Set</button>
-      </div>
       <div class="project-body">
         <div>
-          <div class="project-name">Yale Model United Nations Korea XII</div>
-          <div class="project-desc">Represented the United States in the UNIACB committee at Yale MUN Korea XII — one of the most prestigious Model UN conferences in Asia. Engaged in high-level policy debate, drafted resolutions, and collaborated with delegates from around the world.</div>
-          <div class="project-meta">
-            <span class="project-meta-item"><strong>Committee:</strong> UNIACB</span>
-            <span class="project-meta-item"><strong>Country:</strong> United States</span>
-            <span class="project-meta-item"><strong>Dates:</strong> Nov 29 – Dec 1, 2024</span>
-          </div>
+          <div class="project-name">Yale MUN Korea XII</div>
+          <div class="project-desc">Represented the United States in the UNIACB committee at Yale MUN Korea XII. Engaged in high-level policy debate and resolution drafting.</div>
           <a class="project-link" href="yale-mun-docs.html" target="_blank">View Delegate Paper ↗</a>
         </div>
         <span class="project-tag">MUN</span>
       </div>
     </div>
-
+    
+<!-- 2025 STEM Fair -->
     <div class="project-card">
-      <a class="project-img-link" href="stem-fair-2024.html" target="_blank" title="Click to view Poster">
-        <img class="project-img" id="pimg1" src="project 2024.png" alt="STEM Fair 2024 Experimenting"/>
+      <a class="project-img-link" href="stem-fair-2025.html">
+          <img class="project-img" src="Gravity.png" alt="2025 STEM Fair"/>
       </a>
-      <div class="project-url-row" style="display: none;">
-        <input class="project-url-input" id="purl1" type="text"/>
-        <button class="project-url-btn" onclick="setProjectImg(1)">Set</button>
-      </div>
       <div class="project-body">
         <div>
-          <div class="project-name">STEM Fair Research Project 2024</div>
-          <div class="project-desc">Independent science research project presented at the annual STEM fair. Developed experimental setups, gathered data metrics, and trouble-shot electronic/sensor equipment.</div>
-          <a class="project-link" href="stem-fair-2024.html" target="_blank">View Poster ↗</a>
+          <div class="project-name">2025 STEM Fair: Gravity & Plant Root Growth</div>
+          <div class="project-desc">Investigated the effects of microgravity on plant root growth using a custom Arduino-controlled clinostat mechanism, utilizing precise agar-agar solutions for standardized growth conditions.</div>
+          <a class="project-link" href="stem-fair-2025.html">View Project Details ↗</a>
         </div>
-        <span class="project-tag">STEM</span>
+        <span class="project-tag">Bio-Engineering</span>
       </div>
     </div>
 
+    <!-- 2024 STEM Fair -->
     <div class="project-card">
-      <a class="project-img-link" href="stem-fair-2025.html" target="_blank" title="Click to view Poster">
-        <img class="project-img" id="pimg2" src="Gravity.png" alt="STEM Fair 2025 Researching"/>
+      <a class="project-img-link" href="stem-fair-2024.html">
+          <img class="project-img" src="bg wind turbine.png" alt="2024 STEM Fair"/>
       </a>
-      <div class="project-url-row" style="display: none;">
-        <input class="project-url-input" id="purl2" type="text"/>
-        <button class="project-url-btn" onclick="setProjectImg(2)">Set</button>
-      </div>
       <div class="project-body">
         <div>
-          <div class="project-name">STEM Fair Research Project 2025</div>
-          <div class="project-desc">Independent science research project presented at the school STEM fair. Analyzed agricultural optimization and biological growth parameters under controlled laboratory conditions.</div>
-          <a class="project-link" href="stem-fair-2025.html" target="_blank">View Poster ↗</a>
+          <div class="project-name">2024 STEM Fair: Wind Turbine Aerodynamics</div>
+          <div class="project-desc">Researched wind turbine aerodynamics by designing and 3D-printing various blade configurations, experimentally testing their impact on overall energy production efficiency.</div>
+          <a class="project-link" href="stem-fair-2024.html">View Project Details ↗</a>
         </div>
-        <span class="project-tag">STEM</span>
+        <span class="project-tag">Mechatronics</span>
       </div>
     </div>
 
-  </div>
 </section>
 
 <section id="achievements">
@@ -257,7 +290,7 @@
     <div class="achievement-item">
       <div class="achievement-year">2024</div>
       <div>
-        <div class="achievement-title">Yale Model United Nations Korea XII — Delegate</div>
+        <div class="achievement-title">Yale MUN Korea XII — Delegate</div>
         <div class="achievement-desc">Participated as a delegate representing the United States in the UNIACB committee, Nov 29 – Dec 1, 2024. Certificate of Participation awarded by Secretary-General Wyatt Huang.</div>
         <div class="achievement-badge">Yale MUN Korea XII Best Delegate Paper</div>
       </div>
@@ -279,11 +312,11 @@
       </div>
     </div>
 
-    <div class="achievement-item">
+<div class="achievement-item">
       <div class="achievement-year">2024–26</div>
       <div>
-        <div class="achievement-title">National Honor Society (NHS) — Member 🎖️</div>
-        <div class="achievement-desc">Selected for membership based on excellence in scholarship, leadership, service, and character. Collaborated on school-wide service initiatives.</div>
+        <div class="achievement-title">National Honor Society (NHS) — President 🎖️</div>
+        <div class="achievement-desc">Elected President of the school chapter. Leading initiatives in scholarship, service, and leadership while coordinating chapter-wide activities.</div>
       </div>
     </div>
 
@@ -302,7 +335,7 @@
   <p class="section-label">Beyond Academics</p>
   <h2 class="section-title">Hobbies & Interests</h2>
   <div class="hobbies-grid">
-    <div class="hobby-card"><div class="hobby-icon">🌐</div><div><div class="hobby-title">Model United Nations</div><div class="hobby-desc">Passionate about international diplomacy, geopolitics, and policy debate. Competed at Yale MUN Korea XII representing the United States and Argentina in 2024 and 2025.</div></div></div>
+    <div class="hobby-card"><div class="hobby-icon">🌐</div><div><div class="hobby-title">MUN</div><div class="hobby-desc">Passionate about international diplomacy, geopolitics, and policy debate. Competed at Yale MUN Korea XII representing the United States and Argentina in 2024 and 2025.</div></div></div>
     <div class="hobby-card"><div class="hobby-icon">🎮</div><div><div class="hobby-title"> Business Strategy Game</div><div class="hobby-desc">Simulation Games are one of my favorite type of game, namely, Monopoly and Civilization.</div></div></div>
     <div class="hobby-card"><div class="hobby-icon">📚</div><div><div class="hobby-title">Writing Mystery Fiction</div><div class="hobby-desc">Inspired by Agatha Christie, I developed an interest in writing mystery novels. It is a way to express my creativity.</div></div></div>
     <div class="hobby-card"><div class="hobby-icon">🏸</div><div><div class="hobby-title">Badminton</div><div class="hobby-desc">I learned to play Badminton since a young age of 9; moreover, I self taught tennis based on the experience playing badminton.</div></div></div>
