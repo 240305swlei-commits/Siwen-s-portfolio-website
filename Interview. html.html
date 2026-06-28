@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview with Mr. Huang | HuaTai Securities</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        :root {
+            --huatai-blue: #00458b;
+            --huatai-dark-blue: #001530;
+            --huatai-light-blue: #0066cc;
+            --huatai-red: #e31937;
+            --text-main: #333333;
+            --text-light: #555555;
+            --bg-color: #f8f9fa;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            scroll-behavior: smooth;
+        }
+
+        /* --- Page 1: Dynamic flowing fluid hero background --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            /* High-fidelity fluid flow animation via moving gradient background */
+            background: linear-gradient(-45deg, var(--huatai-dark-blue), var(--huatai-blue), var(--huatai-light-blue), var(--huatai-dark-blue));
+            background-size: 400% 400%;
+            animation: gradientFlow 15s ease infinite;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            padding: 0 2rem;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Ambient glowing overlay shapes that shift smoothly */
+        .hero::before, .hero::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(227, 25, 55, 0.15) 0%, transparent 70%);
+            z-index: 0;
+            mix-blend-mode: screen;
+        }
+
+        .hero::before {
+            width: 80vw;
+            height: 80vw;
+            top: -20vw;
+            left: -20vw;
+            animation: floatShape1 20s ease-in-out infinite alternate;
+        }
+
+        .hero::after {
+            width: 60vw;
+            height: 60vw;
+            bottom: -10vw;
+            right: -10vw;
+            animation: floatShape2 25s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatShape1 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(10vw, 8vh) scale(1.2); }
+        }
+
+        @keyframes floatShape2 {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-8vw, -12vh) scale(0.9); }
+        }
+
+        .hero-content {
+            z-index: 1;
+            max-width: 900px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .hero p.intro {
+            font-size: 1.4rem;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .hero .accent-line {
+            width: 80px;
+            height: 4px;
+            background-color: var(--huatai-red);
+            margin: 0 auto 2rem auto;
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(227, 25, 55, 0.4);
+        }
+
+        .translation-note {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.75);
+            margin-top: 1.5rem;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            z-index: 1;
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .scroll-down:hover {
+            opacity: 1;
+        }
+
+        .scroll-down span {
+            display: block;
+            width: 16px;
+            height: 16px;
+            border-bottom: 2px solid white;
+            border-right: 2px solid white;
+            transform: rotate(45deg);
+            margin-top: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(45deg); }
+            40% { transform: translateY(-10px) rotate(45deg); }
+            60% { transform: translateY(-5px) rotate(45deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Page 2: Interview Content --- */
+        .content-section {
+            padding: 5rem 2rem;
+        }
+
+        .transcript-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            padding: 4rem;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-top: 8px solid var(--huatai-blue);
+        }
+
+        .doc-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .doc-header h2 {
+            color: var(--huatai-dark-blue);
+            font-size: 2.2rem;
+            margin: 0 0 10px 0;
+        }
+
+        .doc-header p {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .category-container {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background-color: #fafbfc;
+            border-radius: 8px;
+            border: 1px solid #eef2f5;
+        }
+
+        .category-header {
+            font-size: 1.6rem;
+            color: var(--huatai-dark-blue);
+            margin-top: 0;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--huatai-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section-block {
+            margin-bottom: 3rem;
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .section-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            color: var(--huatai-blue);
+            margin-top: 0;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 4px;
+            background-color: var(--huatai-red);
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+
+        .qa-pair {
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .speaker-me {
+            font-weight: 700;
+            color: var(--huatai-blue);
+            margin-bottom: 0.4rem;
+        }
+
+        .speaker-huang {
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.4rem;
+            margin-top: 1rem;
+        }
+
+        .answer-text {
+            color: var(--text-light);
+            padding-left: 1rem;
+            border-left: 3px solid #f0f0f0;
+        }
+
+        .conclusion-block {
+            background-color: #f4f7fb;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--huatai-blue);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p.intro { font-size: 1.2rem; }
+            .transcript-container { padding: 2rem; }
+            .category-container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- First Page: Dynamic Flowing Background Section -->
+    <div class="hero" id="intro">
+        <div class="hero-content">
+            <h1>AI & Capital Markets</h1>
+            <div class="accent-line"></div>
+            <p class="intro">
+                An insightful discussion with Mr. Huang, Manager of HuaTai Securities, exploring how AI is reshaping financial business models and how evolving regulatory policies are shifting the dynamics between Mainland China and Hong Kong capital markets.
+            </p>
+            <p class="translation-note">*Note: The original interview was conducted in Mandarin and has been translated into English for this document.</p>
+        </div>
+        <a href="#interview" class="scroll-down">
+            Read Interview
+            <span></span>
+        </a>
+    </div>
+
+    <!-- Second Page: Interview Transcript -->
+    <div class="content-section" id="interview">
+        <div class="transcript-container">
+            
+            <div class="doc-header">
+                <h2>Interview Transcript</h2>
+                <p>Date: June 2026 | Interviewee: Mr. Huang, Manager of HuaTai Securities</p>
+                <p style="font-size: 0.85rem; font-style: italic; margin-top: 5px; text-transform: none; letter-spacing: 0;">Translated from the original Mandarin transcript</p>
+            </div>
+
+            <!-- CATEGORY 1 -->
+            <div class="category-container">
+                <h2 class="category-header">Category I: AI Technology Impact on Finance</h2>
+
+                <div class="section-block">
+                    <h3 class="section-title">1. The Evolving Role of Junior Analysts</h3>
+                    <div class="qa-pair">
+                        <div class="speaker-me">Me:</div>
+                        <div class="answer-text" style="border:none; padding:0; color:var(--text-main); margin-bottom: 1rem;">What core, irreplaceable competencies should junior analysts cultivate to avoid being replaced by AI upon entering the industry?</div>
+                        
+                        <div class="speaker-huang">Mr. Huang:</div>
+                        <div class="answer-text">
+                            I believe there are two core competencies. First is deep proficiency in AI tools—such as model building, prompt engineering, and utilizing platforms like OpenAI or coding assistants to refine information. I’ve seen our research analysts demonstrate this: they train models with thousands of words of context (prompts) to generate high-quality research reports in under 15 minutes. The key is to demand substantive judgment and risk management advice from AI, rather than just vague summaries.<br><br>
+                            Second is a profound understanding of specific industries. Finance is fundamentally about "pricing." While AI can process data, it cannot replicate a human’s judgment regarding an industry’s business model or its technical barriers. Pricing power remains in the hands of those who truly understand the industry.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h3 class="section-title">2. AI in Management and Risk Control</h3>
+                    <div class="qa-pair">
+                        <div class="speaker-me">Me:</div>
+                        <div class="answer-text" style="border:none; padding:0; color:var(--text-main); margin-bottom: 1rem;">What role do AI and advanced algorithms play in assisting management with decision-making, asset allocation, and systemic risk control?</div>
+                        
+                        <div class="speaker-huang">Mr. Huang:</div>
+                        <div class="answer-text">
+                            We now use "AI Avatars" for management. It acts as more than just a dashboard; it performs real-time attribution analysis. If our daily revenue is lower than expected, the AI helps analyze exactly why—identifying whether it’s a specific strategy failure or market movement. It can even provide intelligent suggestions based on current market environments, such as advising a transition toward quantitative trading strategies in low-volatility bond markets.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h3 class="section-title">3. AI: From Efficiency Amplifier to Industry Disruptor</h3>
+                    <div class="qa-pair">
+                        <div class="speaker-me">Me:</div>
+                        <div class="answer-text" style="border:none; padding:0; color:var(--text-main); margin-bottom: 1rem;">Will AI thoroughly disrupt the traditional investment banking and wealth management business models, or will it merely serve as an efficiency amplifier?</div>
+                        
+                        <div class="speaker-huang">Mr. Huang:</div>
+                        <div class="answer-text">
+                            In the last year or two, we’ve essentially finished the "efficiency amplifier" phase. The next phase will be a disruption of business models and processes. We are already seeing this—for instance, AI is changing how we access and synthesize information, effectively replacing traditional search-based workflows.<br><br>
+                            However, there is a compliance boundary. We maintain strict internal data isolation to ensure proprietary firm information is not leaked to external models. Currently, AI is most effective in research, where it synthesizes public information like annual reports and industry trends.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h3 class="section-title">4. Quantitative Trading vs. Value Investing</h3>
+                    <div class="qa-pair">
+                        <div class="speaker-me">Me:</div>
+                        <div class="answer-text" style="border:none; padding:0; color:var(--text-main); margin-bottom: 1rem;">How do you view the divergence between traditional value investing and modern quantitative models?</div>
+                        
+                        <div class="speaker-huang">Mr. Huang:</div>
+                        <div class="answer-text">
+                            Traditional value investing, like Buffett’s approach, relies on fundamental understanding. In contrast, domestic quantitative private equity funds rely entirely on models—predicting the next five minutes of performance based on the last five minutes of data. While this often exacerbates market volatility, it is a completely different trading logic that ignores traditional valuation metrics.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h3 class="section-title">5. The Future of AI and Tech Bubbles</h3>
+                    <div class="qa-pair">
+                        <div class="speaker-me">Me:</div>
+                        <div class="answer-text" style="border:none; padding:0; color:var(--text-main); margin-bottom: 1rem;">Is AI currently in a bubble similar to the 2000s Internet boom?</div>
+                        
+                        <div class="speaker-huang">Mr. Huang:</div>
+                        <div class="answer-text">
+                            Capital markets always have bubbles; without them, they lose their significance. However, AI is fundamentally different from the 2000s Internet boom. The Internet mostly improved efficiency (moving offline to online). AI, however, has the potential to disrupt the underlying logic—for example, autonomous driving could eventually eliminate the need for taxi drivers. Furthermore, AI is fundamentally changing the way we write code. We are moving from "programming" to "defining requirements." If AI can learn rules, it can execute them more efficiently than any human.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CATEGORY 2 -->
+            <div class="category-container">
+                <h2 class="category-header">Category II: Policy Variation in Mainland China & Hong Kong</h2>
+
+                <div class="section-block">
+                    <h3 class="section-title">1. The Importance of Industry Specialization & Market Logic</h3>
+                    <div class="qa-pair">
+                        <div class="speaker-me">Me:</div>
+                        <div class="answer-text" style="border:none; padding:0; color:var(--text-main); margin-bottom: 1rem;">How does this impact how we recruit and train talent?</div>
+                        
+                        <div class="speaker-huang">Mr. Huang:</div>
+                        <div class="answer-text">
+                            As I mentioned, industry understanding is vital. In the past, becoming an investment banker only required passing qualification exams. Today, we divide our teams by industry (e.g., Healthcare, TMT, Engineering). We now frequently recruit talent directly from the industries we serve. If you don’t understand the underlying technology of a pharmaceutical company, how can you accurately price it? Pricing is the core of finance. Whether it's stock valuation or a structured product, the entire financial market is a continuous negotiation of pricing based on differing judgments.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h3 class="section-title">2. Policy, Hard Tech, and the "K-Shaped" Economy</h3>
+                    <div class="qa-pair">
+                        <div class="speaker-me">Me:</div>
+                        <div class="answer-text" style="border:none; padding:0; color:var(--text-main); margin-bottom: 1rem;">How have regulatory policies regarding "New Quality Productive Forces" and IPO tightening affected the landscape for technology and venture boards?</div>
+                        
+                        <div class="speaker-huang">Mr. Huang:</div>
+                        <div class="answer-text">
+                            Financial services must serve the real economy. Given the current global "de-globalization" trend and trade frictions, China places extreme importance on "hard-core" technology. The lowering of listing barriers for tech firms on the STAR Market and ChiNext is a massive boon. Today, tech companies account for over 30% of A-share market capitalization.<br><br>
+                            Regarding Hong Kong, its policies (like Chapter 18C) are vital. Hong Kong remains our most important hub connecting the mainland to global capital. We are seeing a "K-shaped economy": while traditional sectors like real estate and retail face pressure, our tech and AI-driven sectors are experiencing an upward slope.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-block">
+                    <h3 class="section-title">3. A-Shares vs. H-Shares: Considerations for Listing</h3>
+                    <div class="qa-pair">
+                        <div class="speaker-me">Me:</div>
+                        <div class="answer-text" style="border:none; padding:0; color:var(--text-main); margin-bottom: 1rem;">How should companies decide between listing in the A-share market vs. Hong Kong?</div>
+                        
+                        <div class="speaker-huang">Mr. Huang:</div>
+                        <div class="answer-text">
+                            It depends on your goals. If you plan to expand globally, Hong Kong offers a more international investor base and higher visibility. A-shares, however, are influenced heavily by domestic macro and regulatory policies. Both markets have different pricing logics. The goal is to choose the market that best serves your long-term growth and capital requirements.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONCLUSION -->
+            <div class="conclusion-block">
+                <h3 class="section-title" style="margin-bottom: 1rem; font-size: 1.3rem;">Conclusion</h3>
+                <div class="qa-pair" style="margin-bottom: 0;">
+                    <div class="speaker-me">Me:</div>
+                    <div class="answer-text" style="border:none; padding:0; color:var(--text-main); margin-bottom: 1rem;">So, I can conclude that A-shares are more influenced by domestic policies and the macro environment, while H-shares are more international and market-oriented. But they remain deeply interconnected.</div>
+                    
+                    <div class="speaker-huang">Mr. Huang:</div>
+                    <div class="answer-text">
+                        Exactly. As Chinese financial institutions "go global," our specialty remains our connection to China. If we attempt to compete with old-school Wall Street firms on their own turf without a China-related edge, we lose our advantage. Our strength lies in serving Chinese companies going out or international clients wanting to enter the China market.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
