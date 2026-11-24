@@ -408,6 +408,27 @@ footer{background:#100e0c}
 @media(max-width:380px){.about-meta{grid-template-columns:1fr}.stat-value{font-size:2rem}}
 @media(prefers-reduced-motion:reduce){.hero-image,.hero-content{animation:none}.project-img{transition:none}html{scroll-behavior:auto}}
 
+
+/* Certificate and small moments of discovery */
+.certificate-frame{background:#e9ded0;display:flex;align-items:center;justify-content:center;padding:clamp(1rem,3vw,2.5rem)}
+.certificate-frame .certificate-image{width:100%;height:100%;object-fit:contain}
+#hero{isolation:isolate}
+.hero-image{background-color:#39271b;filter:saturate(1.08)}
+#hero:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse at 76% 28%,rgba(189,124,68,.3),transparent 38%),radial-gradient(ellipse at 15% 76%,rgba(104,69,46,.28),transparent 43%)}
+.hero-content,.hero-scroll{z-index:1}
+#academics{position:relative;background:radial-gradient(ellipse at 90% 10%,rgba(141,92,58,.22),transparent 45%)}
+#projects{background:radial-gradient(ellipse at 5% 20%,rgba(121,77,45,.19),transparent 42%),radial-gradient(ellipse at 95% 72%,rgba(166,115,70,.12),transparent 40%)}
+.curiosity-trigger{position:absolute;right:clamp(1.2rem,4vw,4rem);bottom:2rem;z-index:2;border:1px solid rgba(243,225,201,.6);background:rgba(28,21,17,.65);color:#f5e7d7;padding:.65rem .8rem;font:inherit;font-size:12px;cursor:pointer;transition:background .2s,border-color .2s}
+.curiosity-trigger:hover{background:#805c40;border-color:#e5c9a9}
+.curiosity-trigger span{font-size:10px;letter-spacing:.08em;margin-left:.35rem}
+.curiosity-note[hidden]{display:none}
+.curiosity-note{position:absolute;z-index:3;right:clamp(1.2rem,4vw,4rem);bottom:5.7rem;width:min(310px,calc(100% - 2.4rem));padding:1.6rem 2.5rem 1.6rem 1.5rem;background:#eee0cc;color:#302016;text-align:left;box-shadow:0 16px 48px rgba(0,0,0,.3)}
+.curiosity-note p{font-family:'Cormorant Garamond',serif;font-size:1.5rem;line-height:1.2}
+.curiosity-note em{font-size:1.15rem;color:#76593d}
+.curiosity-symbol{display:block;color:#a36e3d;margin-bottom:.5rem}
+.curiosity-close{position:absolute;top:.65rem;right:.85rem;background:none;border:0;color:#302016;font-size:1.6rem;cursor:pointer}
+@media(max-width:760px){.curiosity-trigger span{display:none}.curiosity-trigger{bottom:1.4rem}.hero-scroll{bottom:1.4rem}.certificate-frame{padding:1rem}}
+
 </style>
 
 </head>
@@ -453,6 +474,8 @@ footer{background:#100e0c}
     <a href="#projects" class="hero-cta">Explore my work <span aria-hidden="true">↗</span></a>
   </div>
   <a class="hero-scroll" href="#about">DISCOVER <span aria-hidden="true">↓</span></a>
+  <button type="button" class="curiosity-trigger" aria-expanded="false" aria-controls="curiosity-note">✦ <span>A little curiosity</span></button>
+  <div class="curiosity-note" id="curiosity-note" hidden><span class="curiosity-symbol" aria-hidden="true">✦</span><p>Every number has a story.<br/><em>What will you discover?</em></p><button type="button" class="curiosity-close" aria-label="Close message">×</button></div>
 </section>
 
 <section id="gallery">
@@ -654,9 +677,9 @@ footer{background:#100e0c}
 
     <div class="project-card">
 
-      <a class="project-img-link" href="harvard-essay-docs.html" target="_blank" title="Click to view Winning Essay">
+      <a class="project-img-link certificate-frame" href="harvard-certificate.png" target="_blank" rel="noopener" aria-label="Open the Harvard Political Essay Competition certificate in full size">
 
-          <img class="project-img" id="pimg3" src="harvard-certificate.png" alt="Harvard Essay Certificate"/>
+          <img class="project-img certificate-image" id="pimg3" src="harvard-certificate.png" alt="Harvard Political Essay Competition certificate"/>
 
       </a>
 
@@ -668,7 +691,7 @@ footer{background:#100e0c}
 
           <div class="project-desc">Authored a comprehensive, first-place research paper evaluating critical political-economic policies. Developed data-supported arguments addressing contemporary global strategy and governance structures.</div>
 
-          <a class="project-link" href="harvard-essay-docs.html" target="_blank">View Essay Abstract ↗</a>
+          <a class="project-link" href="harvard-certificate.png" target="_blank" rel="noopener">View certificate ↗</a> &nbsp; <a class="project-link" href="harvard-essay-docs.html" target="_blank" rel="noopener">View essay abstract ↗</a>
 
         </div>
 
@@ -920,6 +943,18 @@ function setProjectImg(i){const url=document.getElementById('purl'+i).value.trim
 
 </script>
 
+<script>
+(function(){
+  const trigger=document.querySelector('.curiosity-trigger');
+  const note=document.querySelector('.curiosity-note');
+  const close=document.querySelector('.curiosity-close');
+  if(!trigger || !note || !close)return;
+  function setOpen(open){note.hidden=!open;trigger.setAttribute('aria-expanded',String(open));if(!open)trigger.focus()}
+  trigger.addEventListener('click',()=>setOpen(note.hidden));
+  close.addEventListener('click',()=>setOpen(false));
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!note.hidden)setOpen(false)});
+})();
+</script>
 </body>
 
 </html> 
