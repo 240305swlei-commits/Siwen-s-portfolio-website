@@ -196,6 +196,60 @@
 
   ::-webkit-scrollbar-thumb{background:var(--gold-light);}
 
+
+  /* Refined portfolio system */
+  :root{--gold:#8b6b39;--gold-light:#cbb98f;--navy:#f5f3ee;--cream:#f5f3ee;--text-dark:#192638;--text-mid:#586577;--text-muted:#738092;--border:rgba(25,38,56,.14);}
+  body{background:#f5f3ee;color:#192638;font-size:15px;line-height:1.75;}
+  nav{padding:1rem clamp(1.25rem,5vw,4.5rem);background:rgba(248,247,243,.94);border-bottom:1px solid var(--border);}
+  .nav-logo{color:#192638;font-family:'DM Sans',sans-serif;font-weight:600;letter-spacing:-.02em;}
+  .nav-links{gap:clamp(.8rem,2vw,2rem);}
+  .nav-links a{font-size:11px;color:#586577;letter-spacing:.1em;}
+  section{max-width:1080px;padding:6.5rem clamp(1.25rem,5vw,4.5rem) 4rem;}
+  #gallery{padding:5.5rem 0 1rem;}
+  .marquee-wrapper{padding:1rem 0;}
+  .marquee-content{gap:1rem;}
+  .marquee-content img{width:clamp(220px,28vw,360px);height:clamp(150px,19vw,230px);border:0;border-radius:3px;}
+  #hero{min-height:62vh;border-bottom:1px solid var(--border);padding-top:5rem;}
+  .hero-eyebrow,.section-label{color:#8b6b39;letter-spacing:.16em;}
+  .hero-name,.section-title,.stat-value,.project-name,.meta-value,.achievement-year{font-family:'DM Sans',sans-serif;}
+  .hero-name{font-weight:500;letter-spacing:-.065em;font-size:clamp(3.7rem,9vw,7rem);line-height:.98;}
+  .hero-tagline{max-width:560px;color:#586577;font-size:1.12rem;}
+  .hero-cta{border-radius:2px;background:#192638;color:#fff;border-color:#192638;}
+  .hero-cta:hover{background:#344a63;border-color:#344a63;}
+  .section-title{font-size:2rem;font-weight:500;letter-spacing:-.04em;border-bottom:1px solid var(--border);padding-bottom:1.1rem;}
+  #about{background:#ebe8df;}
+  #about::before{display:none;}
+  .profile-photo{border:0;border-radius:2px;box-shadow:12px 12px 0 #d4cbb8;}
+  .meta-item,.stat-card,.project-card,.hobby-card{background:rgba(255,255,255,.66);border:1px solid var(--border);border-radius:3px;}
+  .stat-card{padding:1.5rem;}
+  .stat-card::before{width:2px;background:#8b6b39;}
+  .stat-value{font-size:2.2rem;font-weight:600;letter-spacing:-.05em;}
+  .project-card{transition:transform .25s ease,box-shadow .25s ease;}
+  .project-card:hover{transform:translateY(-3px);box-shadow:0 14px 35px rgba(25,38,56,.09);}
+  .project-img-link{height:220px;}
+  .project-tag{color:#765d35;border-color:rgba(139,107,57,.35);background:rgba(139,107,57,.06);}
+  .achievement-item{border-bottom:1px solid var(--border);}
+  .achievement-badge{border-radius:2px;background:rgba(139,107,57,.08);color:#765d35;border-color:rgba(139,107,57,.25);}
+  .contact-line{border-bottom:1px solid var(--border);}
+  footer{border-top:1px solid var(--border);}
+  @media(max-width:760px){
+    nav{align-items:flex-start;gap:.75rem;flex-direction:column;padding:.8rem 1.1rem;}
+    .nav-links{width:100%;gap:1rem;overflow-x:auto;padding:.2rem 0 .4rem;white-space:nowrap;}
+    .nav-links a{font-size:10px;}
+    section{padding:5.5rem 1.25rem 3rem;}
+    #gallery{padding-top:6.8rem;}
+    #hero{min-height:50vh;}
+    .about-grid{grid-template-columns:1fr;gap:2rem;}
+    .profile-photo-wrap{align-items:flex-start;}
+    .profile-photo{width:160px;height:190px;}
+    .stats-grid{grid-template-columns:1fr;gap:.75rem;}
+    .project-body{flex-direction:column;}
+    .achievement-item{grid-template-columns:65px 1fr;gap:.8rem;}
+    .contact-line{gap:1rem;align-items:flex-start;}
+    .contact-val{text-align:right;overflow-wrap:anywhere;}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee-content{animation:none}.project-card{transition:none}}
+
 </style>
 
 </head>
@@ -344,7 +398,7 @@
 
     <div class="stat-sub">RW 690 · Math 790</div>
 
-</div>    <div class="stat-card"><div class="stat-label">AP Courses</div><div class="stat-value">8</div><div class="stat-sub">4 scored · 4 upcoming</div></div>
+</div>    <div class="stat-card"><div class="stat-label">AP Exam Scores</div><div class="stat-value">4</div><div class="stat-sub">Completed exams</div></div>
 
   </div>
 
@@ -357,15 +411,6 @@
     <div class="ap-item"><span class="ap-name">AP Calculus BC</span><span class="ap-score">5</span></div>     
 
     <div class="ap-item"><span class="ap-name">AP Chemistry</span><span class="ap-score">4</span></div>
-
-
-    <div class="ap-item"><span class="ap-name">AP Statistics</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2027)</span></div>
-
-    <div class="ap-item"><span class="ap-name">AP Comparative Government and Politics</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2027)</span></div>
-
-    <div class="ap-item"><span class="ap-name">AP Environmental Science</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2027)</span></div>
-
-    <div class="ap-item"><span class="ap-name">AP Computer Science A</span><span class="ap-score pending" style="color: var(--gold-light); font-style: italic;">Upcoming (May 2027)</span></div>
 
   </div>
 
